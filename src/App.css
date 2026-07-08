@@ -121,6 +121,46 @@
 .fake-block-green {
   background: #16a34a;
 }
+.level-summary {
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.level-summary h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.level-summary p {
+  margin: 6px 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.maze-error-box {
+  margin: 18px 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.maze-state-preview {
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.maze-state-preview p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
 
 .maze-grid {
   display: grid;

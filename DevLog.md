@@ -30,3 +30,18 @@ To do next:
 
 To do next:
 - Maze data model
+
+## Section 3: Maze Data Model
+
+- Created a folder (`src/maze`) for maze-related files.
+- Added TypeScript types for maze cells, positions, directions, levels, and maze state.
+- Created sample maze levels in a data file (sampleMazes.ts).
+- Added maze engine helper functions.
+- Added validation to ensure maze levels have a ruleset to adhere to.
+- Updated the maze panel so it reads from the maze data model instead of a using hardcoded preview.
+- Displayed the starting position, goal position, and starting direction (0-indexed).
+
+To do next:
+- Make maze display interactive (Run/Reset buttons)
+- Add movement controls to the maze
+
