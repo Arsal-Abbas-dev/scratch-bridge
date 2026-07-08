@@ -200,6 +200,12 @@
   color: #92400e;
 }
 
+.player-cell {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+  color: #1d4ed8;
+}
+
 .maze-controls {
   display: flex;
   justify-content: center;

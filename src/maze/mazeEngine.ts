@@ -37,7 +37,8 @@ export function validateMaze(level: mazeLevel): string[] {
 
     for (let row = 0; row < level.grid.length; row++) {
         if (level.grid[row].length !== numColumns) {
-            errors.push('Row "${row}" has a different number of cells to the first one')
+            errors.push('All rows must have the same number of cells')
+            return errors
         }
         for (const cell of level.grid[row]) {
             if (cell === 'start') {

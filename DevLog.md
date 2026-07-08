@@ -45,3 +45,16 @@ To do next:
 - Make maze display interactive (Run/Reset buttons)
 - Add movement controls to the maze
 
+## Section 4: Maze Display Structure
+
+- Split the maze display into smaller reusable components.
+- Added temporary movement buttons for Move Forward, Turn Left, Turn Right, and Reset.
+- Added styling for the current player cell.
+- Confirmed the maze loads from the typed maze data.
+- Confirmed the player icon changes when the starting direction is temporarily changed.
+- Confirmed the correct validation error display appears when a typed maze is invalid.
+
+To do next:
+- Make maze display interactive (Run/Reset buttons)
+- Add movement logic to the maze
+- Collision detection
