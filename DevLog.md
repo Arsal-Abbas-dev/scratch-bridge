@@ -58,3 +58,22 @@ To do next:
 - Make maze display interactive (Run/Reset buttons)
 - Add movement logic to the maze
 - Collision detection
+
+## Section 5: Maze Movement Logic
+
+- Added movement logic to the maze engine.
+- Made the movement buttons interactive.
+- Added wall collision detection so the player cannot move outside the maze or into wall cells.
+- Added goal detection so that a 'success' message is displayed when the player reaches the goal.
+- Added reset logic so the player can return to the starting position.
+- Added command history so the learner's attempted logic is visible.
+
+- Confirmed the player starts on the start cell and faces right.
+- Confirmed Move Forward updates the player position.
+- Confirmed Turn Left and Turn Right changes the player direction.
+- Confirmed the player cannot move beyond the maze.
+- Made the app show a 'blocked' message after a wall collision or maze edge collision.
+
+To do next:
+- Make Command Model
+- Implement Python into the website

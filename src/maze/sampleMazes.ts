@@ -3,7 +3,7 @@ import type { mazeLevel } from './mazeTypes'
 export const sampleMazes: mazeLevel[] = [
     {
         id:0,
-        name:'basePlate',
+        name:'Base Plate',
         concept:'Nothing',
         instructions:'This is the baseplate, a completely blank template!',
         grid: [
@@ -13,6 +13,7 @@ export const sampleMazes: mazeLevel[] = [
             ['path', 'path', 'path', 'path', 'path'],
             ['path', 'path', 'path', 'path', 'goal'],
         ],
+        facing: 'right'
     },
     {
         id:1,
@@ -26,6 +27,7 @@ export const sampleMazes: mazeLevel[] = [
             ['wall', 'wall', 'wall', 'wall', 'wall'],
             ['wall', 'wall', 'wall', 'wall', 'wall'],
         ],
+        facing: 'right'
     },
     {
         id: 2,
@@ -40,6 +42,7 @@ export const sampleMazes: mazeLevel[] = [
             ['wall', 'wall', 'wall', 'wall', 'path'],
             ['path', 'path', 'path', 'path', 'path'],
         ],
+        facing: 'right'
     },
     {
         id: 3,
@@ -54,6 +57,7 @@ export const sampleMazes: mazeLevel[] = [
             ['path', 'wall', 'path', 'path', 'path'],
             ['path', 'wall', 'wall', 'wall', 'goal'],
         ],
+        facing: 'right'
   },
 
 ]

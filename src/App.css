@@ -268,3 +268,21 @@
     min-height: auto;
   }
 }
+.command-history {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.command-history li {
+  margin-bottom: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+.maze-state-preview {
+  display: grid;
+  gap: 6px;
+}
+
+.maze-state-preview p {
+  margin: 0;
+}
