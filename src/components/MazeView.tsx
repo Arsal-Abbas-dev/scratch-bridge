@@ -5,9 +5,9 @@ import { MazeControls } from './MazeControls'
 import { MazeGrid } from './MazeGrid'
 import { MazeStatePreview } from './MazeStatePreview'
 import { MazeValidationErrors } from './MazeValidationErrors'
-
 import { useState } from 'react'
 import type { moveCommand } from '../maze/mazeTypes'
+import { CodeView } from './CodeView'
 
 const activeLevel = sampleMazes[3]!
 const validationErrors = validateMaze(activeLevel)
@@ -43,6 +43,8 @@ export function MazeView() {
       )}
 
       <MazeStatePreview mazeState={mazeState} />
+
+      <CodeView commandHistory={mazeState.commandHistory} isEmbedded />
 
       <MazeControls
         onCommand={handleCommand}

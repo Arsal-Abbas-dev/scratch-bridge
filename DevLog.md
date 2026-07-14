@@ -77,3 +77,18 @@ To do next:
 To do next:
 - Make Command Model
 - Implement Python into the website
+
+
+## Section 6: Python Code Preview from Commands
+
+- Created a new folder (`src/code`) for code-generation utilities.
+- Created `pythonCodeGenerator.ts` to translate maze commands into Python-style code.
+- Updated `CodeView.tsx` so it can display generated Python-style code.
+- Connected the live maze command history to a code view.
+- Added an embedded Python Code View inside the maze panel.
+- Code preview starts with a placeholder message
+- Made it so that Reset clears the command history and code preview.
+
+To do next:
+- Move CodeView to its correct place
+- Add a command program builder

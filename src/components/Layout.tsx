@@ -3,6 +3,7 @@ import { MazeView } from "./MazeView";
 import { CodeView } from "./CodeView";
 import { FeedbackPanel } from "./FeedbackPanel";
 
+
 export function Layout() {
     return (
         <main className="app-layout">
@@ -17,7 +18,7 @@ export function Layout() {
                 <BlocklyWorkspacePlaceholder/>
                 <MazeView/>
                 <aside className="right-column">
-                    <CodeView/>
+                    <CodeView />
                     <FeedbackPanel/>
                 </aside>
             </section>

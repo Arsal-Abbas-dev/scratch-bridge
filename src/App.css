@@ -286,3 +286,31 @@
 .maze-state-preview p {
   margin: 0;
 }
+.embedded-code-view {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #f9fafb;
+}
+
+.code-view-intro {
+  margin-top: 0;
+  color: #374151;
+}
+
+.code-preview {
+  margin: 12px 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: #111827;
+  color: #f9fafb;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.code-preview code {
+  font-family: inherit;
+}
