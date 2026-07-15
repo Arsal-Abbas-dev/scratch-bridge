@@ -1,8 +1,7 @@
-import { BlocklyWorkspacePlaceholder } from "./BlocklyWorkspacePlaceholder";
-import { MazeView } from "./MazeView";
-import { CodeView } from "./CodeView";
-import { FeedbackPanel } from "./FeedbackPanel";
-
+import { BlocklyWorkspacePlaceholder } from "./BlocklyWorkspacePlaceholder"
+import { MazeView } from "./MazeView"
+import { CodeView } from "./CodeView"
+import { FeedbackPanel } from "./FeedbackPanel" 
 
 export function Layout() {
     return (

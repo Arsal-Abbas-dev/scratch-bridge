@@ -314,3 +314,51 @@
 .code-preview code {
   font-family: inherit;
 }
+.command-builder {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.command-builder h3 {
+  margin-top: 0;
+}
+
+.command-builder-note {
+  color: #374151;
+}
+
+.command-builder-buttons,
+.program-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.program-list {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.program-command-list {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.program-command-list li {
+  margin-bottom: 4px;
+}
+
+.program-actions button:last-child {
+  background: #6b7280;
+}
+
+.program-actions button:last-child:not(:disabled):hover {
+  background: #4b5563;
+}

@@ -92,3 +92,17 @@ To do next:
 To do next:
 - Move CodeView to its correct place
 - Add a command program builder
+
+## Section 7: Command Program Builder
+
+- Created a `CommandBuilder` component.
+- Added buttons for adding the movement commands to a planned program.
+- Added a planned command list so the learner can see the program before running it.
+- Added logic to add commands to and clear the planned program.
+- Added logic to run the planned program on the maze all at once.
+- Updated the Python Code View so it mirrors the planned program commands.
+- Confirmed that Reset resets the maze but does not clear the planned program.
+
+To do next:
+- Move CodeView to its correct place
+- Make the command builder execute step-by-step
