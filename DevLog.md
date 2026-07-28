@@ -105,4 +105,19 @@ To do next:
 
 To do next:
 - Move CodeView to its correct place
+- Add a run summary to the program built using the command builder
+- Make the command builder execute step-by-step
+
+## Section 8: Program Execution Feedback
+
+- Created a `ProgramRunSummary` component.
+- Added a summary panel that appears below the Command Program Builder.
+- Added `programRunResult` state in `MazeView`.
+- Added logic to track how many commands were in the planned program.
+- Added logic to track which commands were attempted.
+- Added logic to show the final status and final message after the program ran.
+- Updated the program runner so it returns both the final maze state and the attempted commands.
+
+To do next:
+- Move CodeView to its correct place
 - Make the command builder execute step-by-step

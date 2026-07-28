@@ -1,17 +1,33 @@
 import { useState } from 'react'
 import type { moveCommand, mazeState } from '../maze/mazeTypes'
-import { createInitialMazeState, runCommand, validateMaze } from '../maze/mazeEngine'
+import {
+  createInitialMazeState,
+  runCommand,
+  validateMaze,
+} from '../maze/mazeEngine'
 import { sampleMazes } from '../maze/sampleMazes'
+import { CodeView } from './CodeView'
+import { CommandBuilder } from './CommandBuilder'
 import { LevelSummary } from './LevelSummary'
 import { MazeControls } from './MazeControls'
 import { MazeGrid } from './MazeGrid'
 import { MazeStatePreview } from './MazeStatePreview'
 import { MazeValidationErrors } from './MazeValidationErrors'
-import { CodeView } from './CodeView'
-import { CommandBuilder } from './CommandBuilder'
+import {
+  ProgramRunSummary,
+  type ProgramRunResult,
+} from './ProgramRunSummary'
 
-const activeLevel = sampleMazes[3]!
+const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
+
+function getMazeStateStatus(mazeState: mazeState) {
+  return String(mazeState.status)
+}
+
+function getMazeStateMessage(mazeState: mazeState) {
+  return String(mazeState.message)
+}
 
 export function MazeView() {
   const [mazeState, setMazeState] = useState(() =>
@@ -19,8 +35,12 @@ export function MazeView() {
   )
 
   const [programCommands, setProgramCommands] = useState<moveCommand[]>([])
+  const [programRunResult, setProgramRunResult] =
+    useState<ProgramRunResult | null>(null)
 
   function handleCommand(commandType: moveCommand) {
+    setProgramRunResult(null)
+
     setMazeState((currentState) =>
       runCommand(activeLevel, currentState, commandType),
     )
@@ -28,20 +48,33 @@ export function MazeView() {
 
   function handleReset() {
     setMazeState(createInitialMazeState(activeLevel))
+    setProgramRunResult(null)
   }
 
   function handleAddProgramCommand(commandType: moveCommand) {
+    setProgramRunResult(null)
     setProgramCommands((currentCommands) => [...currentCommands, commandType])
   }
 
   function handleClearProgram() {
     setProgramCommands([])
+    setProgramRunResult(null)
   }
 
   function handleRunProgram() {
-    setMazeState((currentState) =>
-      runProgramCommands(currentState, programCommands),
-    )
+    setMazeState((currentState) => {
+      const result = runProgramCommands(currentState, programCommands)
+
+      setProgramRunResult({
+        commandCount: programCommands.length,
+        attemptedCommands: result.attemptedCommands,
+        finalStatus: getMazeStateStatus(result.finalState),
+        finalMessage: getMazeStateMessage(result.finalState),
+        reachedGoal: result.finalState.isComplete,
+      })
+
+      return result.finalState
+    })
   }
 
   function runProgramCommands(
@@ -49,16 +82,21 @@ export function MazeView() {
     commands: moveCommand[],
   ) {
     let nextState = startingState
+    const attemptedCommands: moveCommand[] = []
 
     for (const commandType of commands) {
       if (nextState.isComplete) {
         break
       }
 
+      attemptedCommands.push(commandType)
       nextState = runCommand(activeLevel, nextState, commandType)
     }
 
-    return nextState
+    return {
+      finalState: nextState,
+      attemptedCommands,
+    }
   }
 
   return (
@@ -91,6 +129,8 @@ export function MazeView() {
         isClearDisabled={programCommands.length === 0}
       />
 
+      <ProgramRunSummary result={programRunResult} />
+
       <CodeView commands={programCommands} isEmbedded />
 
       <MazeControls
@@ -101,9 +141,9 @@ export function MazeView() {
       />
 
       <p className="panel-note">
-        The command builder creates a planned program before it runs.
+        The command builder creates a planned program before it runs. The run
+        summary explains what happened after the planned program was executed.
       </p>
     </section>
   )
 }
-

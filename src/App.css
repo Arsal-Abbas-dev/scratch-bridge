@@ -362,3 +362,62 @@
 .program-actions button:last-child:not(:disabled):hover {
   background: #4b5563;
 }
+.program-run-summary {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.program-run-summary h3 {
+  margin-top: 0;
+}
+
+.program-run-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.program-run-summary-grid div {
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.program-run-summary-grid strong,
+.program-run-summary-grid span {
+  display: block;
+}
+
+.program-run-summary-grid span {
+  margin-top: 4px;
+}
+
+.program-run-message {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.program-run-message p {
+  margin-bottom: 0;
+}
+
+.program-run-attempts {
+  margin-top: 12px;
+}
+
+.program-run-attempts ol {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.program-run-attempts li {
+  margin-bottom: 4px;
+}
