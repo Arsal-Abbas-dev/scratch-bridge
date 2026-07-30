@@ -136,12 +136,21 @@ To do next:
 - Connected the step runner to the existing maze engine.
 - Updated the Program Run Summary after each step.
 
+To do next: 
+- Move CodeView to its correct place
+- Add step-by-step highlighting
 
-### Current limitation
+## Section 10: Command and Python Code Highlighting
 
-The step-by-step runner is manual. The learner must click Run Next Command for each step. The app does not yet animate the whole program automatically, and it does not yet highlight the exact command inside the Python Code View.
+- Updated the `CommandBuilder` component to support command highlighting.
+- Added active command highlighting to the planned program list.
+- Added attempted command styling to the planned program list.
+- Updated the `CodeView` component to render Python-style code line by line.
+- Added active Python line highlighting.
+- Added attempted Python line styling.
+- Connected the same active command index to both the planned command list and the Python Code View.
+- Connected the same attempted command count to both the planned command list and the Python Code View.
+- Updated `MazeView` so the active command and matching Python line are highlighted during step-by-step execution.
 
-### Next step
-
-On Day 10, I will improve the learning connection between the planned commands and the Python Code View by preparing command highlighting or clearer code-to-action feedback.
-
+To do next:
+- Move CodeView to its correct place
