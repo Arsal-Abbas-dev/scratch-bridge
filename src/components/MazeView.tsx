@@ -45,6 +45,13 @@ export function MazeView() {
     moveCommand[]
   >([])
 
+  const activeCommandIndex =
+    isStepModeActive && currentStepIndex < programCommands.length
+      ? currentStepIndex
+      : null
+
+  const attemptedCommandCount = stepAttemptedCommands.length
+
   function clearStepRunState() {
     setIsStepModeActive(false)
     setCurrentStepIndex(0)
@@ -205,6 +212,8 @@ export function MazeView() {
           isStepModeActive
         }
         isClearDisabled={programCommands.length === 0}
+        activeCommandIndex={activeCommandIndex}
+        attemptedCommandCount={attemptedCommandCount}
       />
 
       <ProgramStepControls
@@ -229,7 +238,12 @@ export function MazeView() {
 
       <ProgramRunSummary result={programRunResult} />
 
-      <CodeView commands={programCommands} isEmbedded />
+      <CodeView
+        commands={programCommands}
+        isEmbedded
+        activeCommandIndex={activeCommandIndex}
+        attemptedCommandCount={attemptedCommandCount}
+      />
 
       <MazeControls
         onCommand={handleCommand}
@@ -239,9 +253,9 @@ export function MazeView() {
       />
 
       <p className="panel-note">
-        The command builder creates a planned program before it runs. The
-        step-by-step runner lets the learner execute that planned program one
-        command at a time.
+        The command builder creates a planned program before it runs. The active
+        command and matching Python-style code line are highlighted during
+        step-by-step execution.
       </p>
     </section>
   )

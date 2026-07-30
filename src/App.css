@@ -474,3 +474,43 @@
 .program-step-actions button:last-child:not(:disabled):hover {
   background: #4b5563;
 }
+.program-command-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  border: 1px solid transparent;
+}
+
+.program-command-number {
+  display: inline-block;
+  min-width: 64px;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.program-command-item-attempted {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.program-command-item-active {
+  background: #eff6ff;
+  border-color: #60a5fa;
+  outline: 2px solid #bfdbfe;
+}
+
+.code-line {
+  display: block;
+  min-height: 1.4em;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.code-line-attempted {
+  background: rgba(16, 185, 129, 0.16);
+}
+
+.code-line-active {
+  background: rgba(59, 130, 246, 0.22);
+  outline: 1px solid rgba(59, 130, 246, 0.55);
+}
