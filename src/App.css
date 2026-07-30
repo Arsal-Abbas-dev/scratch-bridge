@@ -421,3 +421,56 @@
 .program-run-attempts li {
   margin-bottom: 4px;
 }
+.program-step-controls {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.program-step-controls h3 {
+  margin-top: 0;
+}
+
+.program-step-note {
+  color: #374151;
+}
+
+.program-step-status {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.program-step-status div {
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.program-step-status strong,
+.program-step-status span {
+  display: block;
+}
+
+.program-step-status span {
+  margin-top: 4px;
+}
+
+.program-step-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.program-step-actions button:last-child {
+  background: #6b7280;
+}
+
+.program-step-actions button:last-child:not(:disabled):hover {
+  background: #4b5563;
+}

@@ -121,3 +121,27 @@ To do next:
 To do next:
 - Move CodeView to its correct place
 - Make the command builder execute step-by-step
+
+## Section 9: Step-by-Step Program Execution
+
+- Created a `ProgramStepControls` component.
+- Added a Step-by-Step Runner panel.
+- Added a Start Step Run button.
+- Added a Run Next Command button.
+- Added a Stop Step Run button.
+- Added step mode state in `MazeView`.
+- Added current step tracking in `MazeView`.
+- Added attempted command tracking for step-by-step execution.
+- Connected the step runner to the existing planned command list.
+- Connected the step runner to the existing maze engine.
+- Updated the Program Run Summary after each step.
+
+
+### Current limitation
+
+The step-by-step runner is manual. The learner must click Run Next Command for each step. The app does not yet animate the whole program automatically, and it does not yet highlight the exact command inside the Python Code View.
+
+### Next step
+
+On Day 10, I will improve the learning connection between the planned commands and the Python Code View by preparing command highlighting or clearer code-to-action feedback.
+

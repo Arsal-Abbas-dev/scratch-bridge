@@ -17,6 +17,7 @@ import {
   ProgramRunSummary,
   type ProgramRunResult,
 } from './ProgramRunSummary'
+import { ProgramStepControls } from './ProgramStepControls'
 
 const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
@@ -38,7 +39,20 @@ export function MazeView() {
   const [programRunResult, setProgramRunResult] =
     useState<ProgramRunResult | null>(null)
 
+  const [isStepModeActive, setIsStepModeActive] = useState(false)
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const [stepAttemptedCommands, setStepAttemptedCommands] = useState<
+    moveCommand[]
+  >([])
+
+  function clearStepRunState() {
+    setIsStepModeActive(false)
+    setCurrentStepIndex(0)
+    setStepAttemptedCommands([])
+  }
+
   function handleCommand(commandType: moveCommand) {
+    clearStepRunState()
     setProgramRunResult(null)
 
     setMazeState((currentState) =>
@@ -48,20 +62,25 @@ export function MazeView() {
 
   function handleReset() {
     setMazeState(createInitialMazeState(activeLevel))
+    clearStepRunState()
     setProgramRunResult(null)
   }
 
   function handleAddProgramCommand(commandType: moveCommand) {
+    clearStepRunState()
     setProgramRunResult(null)
     setProgramCommands((currentCommands) => [...currentCommands, commandType])
   }
 
   function handleClearProgram() {
     setProgramCommands([])
+    clearStepRunState()
     setProgramRunResult(null)
   }
 
   function handleRunProgram() {
+    clearStepRunState()
+
     setMazeState((currentState) => {
       const result = runProgramCommands(currentState, programCommands)
 
@@ -75,6 +94,64 @@ export function MazeView() {
 
       return result.finalState
     })
+  }
+
+  function handleStartStepRun() {
+    const startingState = createInitialMazeState(activeLevel)
+
+    setMazeState(startingState)
+    setIsStepModeActive(true)
+    setCurrentStepIndex(0)
+    setStepAttemptedCommands([])
+
+    setProgramRunResult({
+      commandCount: programCommands.length,
+      attemptedCommands: [],
+      finalStatus: getMazeStateStatus(startingState),
+      finalMessage: 'Step run started. Run the next command when ready.',
+      reachedGoal: startingState.isComplete,
+    })
+  }
+
+  function handleRunNextStep() {
+    if (!isStepModeActive) {
+      return
+    }
+
+    if (mazeState.isComplete) {
+      setIsStepModeActive(false)
+      return
+    }
+
+    const commandType = programCommands[currentStepIndex]
+
+    if (!commandType) {
+      setIsStepModeActive(false)
+      return
+    }
+
+    const nextState = runCommand(activeLevel, mazeState, commandType)
+    const nextAttemptedCommands = [...stepAttemptedCommands, commandType]
+    const nextStepIndex = currentStepIndex + 1
+    const hasMoreCommands = nextStepIndex < programCommands.length
+    const shouldContinueStepMode = hasMoreCommands && !nextState.isComplete
+
+    setMazeState(nextState)
+    setStepAttemptedCommands(nextAttemptedCommands)
+    setCurrentStepIndex(nextStepIndex)
+    setIsStepModeActive(shouldContinueStepMode)
+
+    setProgramRunResult({
+      commandCount: programCommands.length,
+      attemptedCommands: nextAttemptedCommands,
+      finalStatus: getMazeStateStatus(nextState),
+      finalMessage: getMazeStateMessage(nextState),
+      reachedGoal: nextState.isComplete,
+    })
+  }
+
+  function handleStopStepRun() {
+    setIsStepModeActive(false)
   }
 
   function runProgramCommands(
@@ -124,9 +201,30 @@ export function MazeView() {
         isRunDisabled={
           programCommands.length === 0 ||
           validationErrors.length > 0 ||
-          mazeState.isComplete
+          mazeState.isComplete ||
+          isStepModeActive
         }
         isClearDisabled={programCommands.length === 0}
+      />
+
+      <ProgramStepControls
+        programCommands={programCommands}
+        currentStepIndex={currentStepIndex}
+        isStepModeActive={isStepModeActive}
+        onStartStepRun={handleStartStepRun}
+        onRunNextStep={handleRunNextStep}
+        onStopStepRun={handleStopStepRun}
+        isStartDisabled={
+          programCommands.length === 0 ||
+          validationErrors.length > 0 ||
+          isStepModeActive
+        }
+        isNextDisabled={
+          !isStepModeActive ||
+          validationErrors.length > 0 ||
+          mazeState.isComplete ||
+          currentStepIndex >= programCommands.length
+        }
       />
 
       <ProgramRunSummary result={programRunResult} />
@@ -141,8 +239,9 @@ export function MazeView() {
       />
 
       <p className="panel-note">
-        The command builder creates a planned program before it runs. The run
-        summary explains what happened after the planned program was executed.
+        The command builder creates a planned program before it runs. The
+        step-by-step runner lets the learner execute that planned program one
+        command at a time.
       </p>
     </section>
   )
