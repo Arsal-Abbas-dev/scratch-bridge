@@ -514,3 +514,48 @@
   background: rgba(59, 130, 246, 0.22);
   outline: 1px solid rgba(59, 130, 246, 0.55);
 }
+.command-mapping-preview {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.command-mapping-preview h3 {
+  margin-top: 0;
+}
+
+.command-mapping-preview p {
+  color: #374151;
+}
+
+.command-mapping-table-wrapper {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.command-mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.command-mapping-table th,
+.command-mapping-table td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.command-mapping-table th {
+  background: #f9fafb;
+}
+
+.command-mapping-table code {
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.9rem;
+}

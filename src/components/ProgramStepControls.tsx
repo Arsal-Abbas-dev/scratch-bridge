@@ -1,4 +1,5 @@
 import type { moveCommand } from '../maze/mazeTypes'
+import { getMazeCommandLabel } from '../commands/MazeCommandConfig'
 
 type ProgramStepControlsProps = {
   programCommands: moveCommand[]
@@ -9,12 +10,6 @@ type ProgramStepControlsProps = {
   onStopStepRun: () => void
   isStartDisabled: boolean
   isNextDisabled: boolean
-}
-
-const commandLabels: Record<moveCommand, string> = {
-  'move forward': 'Move Forward',
-  'turn left': 'Turn Left',
-  'turn right': 'Turn Right',
 }
 
 export function ProgramStepControls({
@@ -56,7 +51,7 @@ export function ProgramStepControls({
 
         <div>
           <strong>Next command:</strong>
-          <span>{nextCommand ? commandLabels[nextCommand] : 'None'}</span>
+          <span>{nextCommand ? getMazeCommandLabel(nextCommand) : 'None'}</span>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import type { moveCommand } from '../maze/mazeTypes'
+import { getMazeCommandLabel } from '../commands/MazeCommandConfig'
 
 export type ProgramRunResult = {
   commandCount: number
@@ -10,12 +11,6 @@ export type ProgramRunResult = {
 
 type ProgramRunSummaryProps = {
   result: ProgramRunResult | null
-}
-
-const commandLabels: Record<moveCommand, string> = {
-  'move forward': 'Move Forward',
-  'turn left': 'Turn Left',
-  'turn right': 'Turn Right',
 }
 
 export function ProgramRunSummary({ result }: ProgramRunSummaryProps) {
@@ -62,7 +57,9 @@ export function ProgramRunSummary({ result }: ProgramRunSummaryProps) {
             ) : (
               <ol>
                 {result.attemptedCommands.map((command, index) => (
-                  <li key={`${command}-${index}`}>{commandLabels[command]}</li>
+                  <li key={`${command}-${index}`}>
+                    {getMazeCommandLabel(command)}
+                  </li>
                 ))}
               </ol>
             )}

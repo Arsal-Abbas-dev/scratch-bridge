@@ -154,3 +154,19 @@ To do next:
 
 To do next:
 - Move CodeView to its correct place
+
+## Section 11: Shared Command Mapping Layer
+
+- Created a new `src/commands` folder.
+- Created `mazeCommandConfig.ts`.
+- Stored each command’s internal type, learner label, Python-style code, future Blockly block type, and description in one place.
+- Updated `pythonCodeGenerator.ts` to use the shared command mapping.
+- Updated `CommandBuilder.tsx` to use the shared command mapping for button labels and planned program labels.
+- Updated `ProgramRunSummary.tsx` to use the shared command mapping for attempted command labels.
+- Updated `ProgramStepControls.tsx` to use the shared command mapping for the next command label.
+- Created `CommandMappingPreview` component.
+- Added a Command Mapping Reference table to the maze page.
+
+To do next:
+- Add Adapter for blocks
+- Move CodeView

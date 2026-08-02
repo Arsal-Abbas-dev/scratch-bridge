@@ -1,4 +1,8 @@
 import type { moveCommand } from '../maze/mazeTypes'
+import {
+  getMazeCommandLabel,
+  mazeCommandConfigs,
+} from '../commands/MazeCommandConfig'
 
 type CommandBuilderProps = {
   programCommands: moveCommand[]
@@ -9,12 +13,6 @@ type CommandBuilderProps = {
   isClearDisabled: boolean
   activeCommandIndex?: number | null
   attemptedCommandCount?: number
-}
-
-const commandLabels: Record<moveCommand, string> = {
-  'move forward': 'Move Forward',
-  'turn left': 'Turn Left',
-  'turn right': 'Turn Right',
 }
 
 export function CommandBuilder({
@@ -51,17 +49,16 @@ export function CommandBuilder({
       </p>
 
       <div className="command-builder-buttons">
-        <button type="button" onClick={() => onAddCommand('move forward')}>
-          Add Move Forward
-        </button>
-
-        <button type="button" onClick={() => onAddCommand('turn left')}>
-          Add Turn Left
-        </button>
-
-        <button type="button" onClick={() => onAddCommand('turn right')}>
-          Add Turn Right
-        </button>
+        {mazeCommandConfigs.map((commandConfig) => (
+          <button
+            key={commandConfig.type}
+            type="button"
+            onClick={() => onAddCommand(commandConfig.type)}
+            title={commandConfig.description}
+          >
+            Add {commandConfig.label}
+          </button>
+        ))}
       </div>
 
       <div className="program-list">
@@ -78,7 +75,7 @@ export function CommandBuilder({
                 aria-current={activeCommandIndex === index ? 'step' : undefined}
               >
                 <span className="program-command-number">Step {index + 1}</span>
-                <span>{commandLabels[command]}</span>
+                <span>{getMazeCommandLabel(command)}</span>
               </li>
             ))}
           </ol>

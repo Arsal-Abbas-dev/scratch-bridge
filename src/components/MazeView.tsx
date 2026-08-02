@@ -18,6 +18,7 @@ import {
   type ProgramRunResult,
 } from './ProgramRunSummary'
 import { ProgramStepControls } from './ProgramStepControls'
+import { CommandMappingPreview } from './CommandMappingPreview'
 
 const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
@@ -244,6 +245,8 @@ export function MazeView() {
         activeCommandIndex={activeCommandIndex}
         attemptedCommandCount={attemptedCommandCount}
       />
+
+      <CommandMappingPreview />
 
       <MazeControls
         onCommand={handleCommand}

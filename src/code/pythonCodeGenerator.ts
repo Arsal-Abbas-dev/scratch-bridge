@@ -1,16 +1,10 @@
 import type { moveCommand } from '../maze/mazeTypes'
+import { getMazeCommandPythonCode } from '../commands/MazeCommandConfig'
 
-const pythonLineByCommand: Record<moveCommand,string> = {
-    'move forward' : 'move_forward()',
-    'turn left' : 'turn_left()',
-    'turn right' : 'turn_right()',
-}
-export function getPythonLineByCommand(command: moveCommand) {
-    return pythonLineByCommand[command]
-}
-export function generatePythonCode(commandHistory: moveCommand[]) {
-    if (commandHistory.length === 0) {
-        return '# Run maze commands to see Python code here'
-    }
-    return commandHistory.map(getPythonLineByCommand).join('\n')
+export function generatePythonCode(commands: moveCommand[]) {
+  if (commands.length === 0) {
+    return '# Run maze commands to see Python code here.'
+  }
+
+  return commands.map(getMazeCommandPythonCode).join('\n')
 }
