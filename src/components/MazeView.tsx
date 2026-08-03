@@ -6,8 +6,10 @@ import {
   validateMaze,
 } from '../maze/mazeEngine'
 import { sampleMazes } from '../maze/sampleMazes'
+import { BlockCommandAdapterPreview } from './BlockCommandAdapterPreview'
 import { CodeView } from './CodeView'
 import { CommandBuilder } from './CommandBuilder'
+import { CommandMappingPreview } from './CommandMappingPreview'
 import { LevelSummary } from './LevelSummary'
 import { MazeControls } from './MazeControls'
 import { MazeGrid } from './MazeGrid'
@@ -18,7 +20,6 @@ import {
   type ProgramRunResult,
 } from './ProgramRunSummary'
 import { ProgramStepControls } from './ProgramStepControls'
-import { CommandMappingPreview } from './CommandMappingPreview'
 
 const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
@@ -82,6 +83,12 @@ export function MazeView() {
 
   function handleClearProgram() {
     setProgramCommands([])
+    clearStepRunState()
+    setProgramRunResult(null)
+  }
+
+  function handleLoadCommandsFromAdapter(commands: moveCommand[]) {
+    setProgramCommands(commands)
     clearStepRunState()
     setProgramRunResult(null)
   }
@@ -248,6 +255,8 @@ export function MazeView() {
 
       <CommandMappingPreview />
 
+      <BlockCommandAdapterPreview onLoadCommands={handleLoadCommandsFromAdapter} />
+
       <MazeControls
         onCommand={handleCommand}
         onReset={handleReset}
@@ -256,9 +265,9 @@ export function MazeView() {
       />
 
       <p className="panel-note">
-        The command builder creates a planned program before it runs. The active
-        command and matching Python-style code line are highlighted during
-        step-by-step execution.
+        The command builder creates a planned program before it runs. The
+        simulated block adapter proves that future block types can be converted
+        into the same internal command list.
       </p>
     </section>
   )

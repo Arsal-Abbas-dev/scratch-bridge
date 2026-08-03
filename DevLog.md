@@ -170,3 +170,22 @@ To do next:
 To do next:
 - Add Adapter for blocks
 - Move CodeView
+
+## Section 12: Simulated Block-to-Command Adapter
+
+- Created a new `src/blocks` folder.
+- Created `blockCommandAdapter.ts`.
+- Added a `MockBlock` type.
+- Added a `BlockCommandAdapterResult` type.
+- Created a mapping from future Blockly block types to internal maze commands.
+- Used the Day 11 command mapping layer to connect future block types to command types.
+- Created a sample simulated block program.
+- Added a converter that turns simulated block data into internal `MazeCommandType` commands.
+- Added error handling for unknown block types.
+- Created a `BlockCommandAdapterPreview` component.
+- Added a Simulated Block Adapter Test panel to the maze page.
+- Added a Load Simulated Block Program button.
+
+
+To do next:
+- Install Blockly
