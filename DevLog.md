@@ -166,10 +166,10 @@ To do next:
 - Updated `ProgramStepControls.tsx` to use the shared command mapping for the next command label.
 - Created `CommandMappingPreview` component.
 - Added a Command Mapping Reference table to the maze page.
+- Moved CodeView to its correct place
 
 To do next:
 - Add Adapter for blocks
-- Move CodeView
 
 ## Section 12: Simulated Block-to-Command Adapter
 
@@ -189,3 +189,21 @@ To do next:
 
 To do next:
 - Install Blockly
+
+## Section 13: Blockly Installation and Workspace Shell
+
+- Installed the official `blockly` npm package.
+- Created a new `src/blockly` folder.
+- Created `emptyToolbox.ts`.
+- Created a `BlocklyWorkspaceShell` React component.
+- Imported Blockly core, standard blocks, and English messages.
+- Applied the English Blockly locale.
+- Added workspace zoom, scrolling, dragging, and trashcan configuration.
+- Added resize handling with `Blockly.svgResize`.
+- Added cleanup using `workspace.dispose`.
+- Added a workspace status indicator.=
+- Added the Blockly workspace to `MazeView`.
+
+To do next:
+- Add toolbox structure 
+- Improve empty workspace
