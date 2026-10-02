@@ -20,7 +20,7 @@ import {
   type ProgramRunResult,
 } from './ProgramRunSummary'
 import { ProgramStepControls } from './ProgramStepControls'
-import { BlocklyWorkspaceShell } from './BlocklyWorkspaceShell'
+{/*import { BlocklyWorkspaceShell } from './BlocklyWorkspaceShell'*/}
 
 const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
@@ -257,12 +257,8 @@ export function MazeView() {
       <CommandMappingPreview />
 
       <BlockCommandAdapterPreview onLoadCommands={handleLoadCommandsFromAdapter} />
-      
-      <CommandMappingPreview />
 
-      <BlockCommandAdapterPreview onLoadCommands={handleLoadCommandsFromAdapter} />
-
-      <BlocklyWorkspaceShell />
+     {/* <BlocklyWorkspaceShell />*/}
 
       
       <MazeControls

@@ -5,7 +5,7 @@ export function createInitialMazeState(level: mazeLevel): mazeState {
     return {
         id: level.id,
         position: findCellPosition(level.grid, 'start'),
-        direction: 'right',
+        direction: level.facing,
         goal: findCellPosition(level.grid, 'goal'),
         isComplete: false,
         status: 'ready',
@@ -31,7 +31,7 @@ export function findCellPosition(grid: mazeCell[][], target: mazeCell): position
             }
         }
     }
-    throw new Error('Maze cell "$(target)" was not found.')
+    throw new Error('Maze cell $(target) was not found.')
 }
 
 export function validateMaze(level: mazeLevel): string[] {
