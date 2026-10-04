@@ -31,7 +31,7 @@ export function findCellPosition(grid: mazeCell[][], target: mazeCell): position
             }
         }
     }
-    throw new Error('Maze cell $(target) was not found.')
+    throw new Error('Maze cell ${target} was not found.')
 }
 
 export function validateMaze(level: mazeLevel): string[] {

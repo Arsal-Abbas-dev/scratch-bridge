@@ -1,3 +1,4 @@
+import * as Blockly from 'blockly/core'
 export const mazeBlocklyToolbox = {
   kind: 'categoryToolbox',
   contents: [
@@ -9,7 +10,7 @@ export const mazeBlocklyToolbox = {
       contents: [
         {
           kind: 'label',
-          text: 'Movement blocks will be added on Day 15.',
+          text: 'Movement blocks will be added later.',
           'web-class': 'blockly-toolbox-message',
         },
         {
@@ -61,3 +62,36 @@ export const mazeBlocklyToolbox = {
   ],
 }
 
+
+  Blockly.common.defineBlocksWithJsonArray([
+    {
+      type: 'maze_start',
+      message0: 'when Run clicked',
+      nextStatement: null,
+      colour: 120
+    },
+
+    {
+      type: 'maze_move_forward',
+      message0: 'move forward',
+      previousStatement: null,
+      nextStatement: null,
+      colour: 210
+    },
+
+    {
+      type: 'maze_turn_left',
+      message0: 'turn left',
+      previousStatement: null,
+      nextStatement: null,
+      colour: 210
+    },
+
+    {
+      type: 'maze_turn_right',
+      message0: 'turn right',
+      previousStatement: null,
+      nextStatement: null,
+      colour: 210
+    }
+  ])

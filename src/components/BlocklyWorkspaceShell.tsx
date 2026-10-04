@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import * as Blockly from 'blockly/core'
 import 'blockly/blocks'
 import * as En from 'blockly/msg/en'
+import '../blockly/mazeBlocks'
 import { mazeBlocklyToolbox } from '../blockly/mazeToolbox'
 
 Blockly.setLocale(En as unknown as { [key: string]: string })
@@ -40,7 +41,24 @@ export function BlocklyWorkspaceShell() {
       },
     })
 
-    workspaceRef.current = workspace
+    Blockly.serialization.workspaces.load(
+      {
+        blocks: {
+          languageVersion: 0,
+          blocks: [
+            {
+              type: 'maze_start',
+              id: 'start-block',
+              x: 50,
+              y: 50,
+            },
+          ],
+        },
+      },
+      workspace
+    )
+
+    workspaceRef.current = workspace  
     setWorkspaceReady(true)
 
     const toolbox = workspace.getToolbox()
