@@ -26,7 +26,7 @@ export function programToPython(program: Program): PythonLine[] {
           text = 'turn_right()'
           break
         default:
-            throw new Error('Unknown function: ${node.action}')
+            throw new Error('Unknown function: ${`node.action`}')
       }
 
       lines.push({

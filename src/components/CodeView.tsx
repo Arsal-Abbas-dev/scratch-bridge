@@ -1,30 +1,26 @@
-import type { moveCommand } from '../maze/mazeTypes'
-import { generatePythonCode } from '../code/pythonCodeGenerator'
+import type { PythonLine } from '../program/programToPython'
 
 type CodeViewProps = {
-  commands?: moveCommand[]
+  pythonLines?: PythonLine[]
   isEmbedded?: boolean
   activeCommandIndex?: number | null
   attemptedCommandCount?: number
 }
 
 export function CodeView({
-  commands = [],
+  pythonLines = [],
   isEmbedded = false,
   activeCommandIndex = null,
   attemptedCommandCount = 0,
 }: CodeViewProps) {
-  const pythonCode = generatePythonCode(commands)
-  const pythonCodeLines = pythonCode.split('\n')
-
   function getCodeLineClassName(index: number) {
     const classNames = ['code-line']
 
-    if (commands.length > 0 && index < attemptedCommandCount) {
+    if (pythonLines.length > 0 && index < attemptedCommandCount) {
       classNames.push('code-line-attempted')
     }
 
-    if (commands.length > 0 && activeCommandIndex === index) {
+    if (pythonLines.length > 0 && activeCommandIndex === index) {
       classNames.push('code-line-active')
     }
 
@@ -45,14 +41,15 @@ export function CodeView({
 
       <pre className="code-preview" aria-label="Python code preview">
         <code>
-          {pythonCodeLines.map((line, index) => (
+          {pythonLines.map((line, index) => (
             <span
-              key={`${line}-${index}`}
+              key={`${line.nodeId}-${index}`}
               className={getCodeLineClassName(index)}
               aria-current={activeCommandIndex === index ? 'step' : undefined}
+              style={{ paddingLeft: `${line.depth * 20}px` }}
             >
-              {line}
-              {index < pythonCodeLines.length - 1 ? '\n' : ''}
+              {line.text}
+              {index < pythonLines.length - 1 ? '\n' : ''}
             </span>
           ))}
         </code>

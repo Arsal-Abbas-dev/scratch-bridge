@@ -4,9 +4,17 @@ import 'blockly/blocks'
 import * as En from 'blockly/msg/en'
 import '../blockly/mazeBlocks'
 import { mazeBlocklyToolbox } from '../blockly/mazeToolbox'
+import { blocklyToProgram } from '../program/blocklyToProgram'
+import { programToPython } from '../program/programToPython'
+import type { PythonLine } from '../program/programToPython'
 
 Blockly.setLocale(En as unknown as { [key: string]: string })
-export function BlocklyWorkspaceShell() {
+
+type BlocklyWorkspaceShellProps = {
+  onPythonLinesChange: (lines: PythonLine[]) => void
+}
+
+export function BlocklyWorkspaceShell({onPythonLinesChange}: BlocklyWorkspaceShellProps) {
   const blocklyContainerRef = useRef<HTMLDivElement | null>(null)
   const workspaceRef = useRef<Blockly.WorkspaceSvg | null>(null)
   const [workspaceReady, setWorkspaceReady] = useState(false)
@@ -40,6 +48,17 @@ export function BlocklyWorkspaceShell() {
         wheel: true,
       },
     })
+
+    const handleWorkspaceChange = (event: Blockly.Events.Abstract) => {
+      if (event.isUiEvent) {
+        return
+      }
+      const result = blocklyToProgram(workspace)
+      const pythonLines = programToPython(result.program)
+      onPythonLinesChange(pythonLines)
+    }
+
+    workspace.addChangeListener(handleWorkspaceChange)
 
     Blockly.serialization.workspaces.load(
       {
@@ -102,7 +121,7 @@ export function BlocklyWorkspaceShell() {
       workspace.dispose()
       workspaceRef.current = null
     }
-  }, [])
+  }, [onPythonLinesChange])
 
   function handleResetWorkspaceView() {
     const workspace = workspaceRef.current

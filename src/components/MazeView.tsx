@@ -7,7 +7,6 @@ import {
 } from '../maze/mazeEngine'
 import { sampleMazes } from '../maze/sampleMazes'
 import { BlockCommandAdapterPreview } from './BlockCommandAdapterPreview'
-import { CodeView } from './CodeView'
 import { CommandBuilder } from './CommandBuilder'
 import { CommandMappingPreview } from './CommandMappingPreview'
 import { LevelSummary } from './LevelSummary'
@@ -20,10 +19,16 @@ import {
   type ProgramRunResult,
 } from './ProgramRunSummary'
 import { ProgramStepControls } from './ProgramStepControls'
-{/*import { BlocklyWorkspaceShell } from './BlocklyWorkspaceShell'*/}
+import { BlocklyWorkspaceShell } from './BlocklyWorkspaceShell'
+import type { PythonLine } from '../program/programToPython'
+
 
 const activeLevel = sampleMazes[0]!
 const validationErrors = validateMaze(activeLevel)
+
+type MazeViewProps = {
+  onPythonLinesChange: (lines: PythonLine[]) => void
+}
 
 function getMazeStateStatus(mazeState: mazeState) {
   return String(mazeState.status)
@@ -33,7 +38,7 @@ function getMazeStateMessage(mazeState: mazeState) {
   return String(mazeState.message)
 }
 
-export function MazeView() {
+export function MazeView({onPythonLinesChange}: MazeViewProps) {
   const [mazeState, setMazeState] = useState(() =>
     createInitialMazeState(activeLevel),
   )
@@ -247,18 +252,11 @@ export function MazeView() {
 
       <ProgramRunSummary result={programRunResult} />
 
-      <CodeView
-        commands={programCommands}
-        isEmbedded
-        activeCommandIndex={activeCommandIndex}
-        attemptedCommandCount={attemptedCommandCount}
-      />
-
       <CommandMappingPreview />
 
       <BlockCommandAdapterPreview onLoadCommands={handleLoadCommandsFromAdapter} />
 
-     {/* <BlocklyWorkspaceShell />*/}
+     { <BlocklyWorkspaceShell onPythonLinesChange={onPythonLinesChange}/>}
 
       
       <MazeControls
