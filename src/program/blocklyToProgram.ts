@@ -16,7 +16,8 @@ export function blocklyToProgram(workspace: Blockly.Workspace) {
         let nextblock = startblock.getNextBlock()
         while (nextblock) {
             if (nextblock.type !== 'maze_move_forward' && nextblock.type !== 'maze_turn_right' && nextblock.type !== 'maze_turn_left'){
-                errors.push("Could not understand ${`nextblock.type`}.")
+                errors.push(`Could not understand ${nextblock.type}.`)
+                continue
             }
             const action = blockToAction[nextblock.type as keyof typeof blockToAction]
             program.push({kind: 'move', action, origin: {blockId: nextblock.id, form: 'block'}})
