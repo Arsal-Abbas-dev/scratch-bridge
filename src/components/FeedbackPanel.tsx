@@ -1,18 +1,18 @@
-export function FeedbackPanel() {
+type FeedbackPanelProps = {
+  message: string
+  tone: 'info' | 'success' | 'error'
+}
+ 
+export function FeedbackPanel({ message, tone }: FeedbackPanelProps) {
   return (
     <section className="panel feedback-panel">
       <div className="panel-header">
-        <p className="panel-label">Step 4</p>
         <h2>Feedback</h2>
       </div>
-
-      <div className="feedback-message">
-        Build the page layout.
+ 
+      <div className={`feedback-message feedback-${tone}`} role="status">
+        {message}
       </div>
-
-      <p className="panel-note">
-        explains errors in beginner-friendly language.
-      </p>
     </section>
   )
 }
