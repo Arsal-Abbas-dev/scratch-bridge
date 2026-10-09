@@ -1,3 +1,5 @@
+Link to live site: https://scratch-bridge-six.vercel.app/
+
 # Scratch Gap Maze
 
 Scratch Gap Maze is a web-based programming education tool designed to help beginners transition gradually from block-based programming to Python-style text-based code.
