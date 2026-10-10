@@ -5,15 +5,19 @@ export const mazeBlocklyToolbox = {
       kind: 'category',
       name: 'Maze Movement',
       colour: '#2563eb',
-      toolboxitemid: 'maze-movement-category',
       contents: [
-        {kind: 'block',type: 'maze_move_forward'},
-        {kind: 'block',type: 'maze_turn_right'},
-        {kind: 'block',type: 'maze_turn_left'},
+        {kind: 'block', type: 'maze_move_forward'},
+        {kind: 'block', type: 'maze_turn_right'},
+        {kind: 'block', type: 'maze_turn_left'},
       ],
     },
     {
-      kind: 'sep',
+      kind: 'category',
+      name: 'Loops',
+      colour: '#9333ea',
+      contents: [
+        {kind: 'block', type: 'maze_repeat'}
+      ],
     },
   ],
 }
