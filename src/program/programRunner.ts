@@ -2,7 +2,7 @@ import { runCommand } from '../maze/mazeEngine'
 import type { mazeLevel, mazeState, moveCommand } from '../maze/mazeTypes'
 import type { Program } from './programTypes'
  
-export const MAX_STEPS = 500
+export const maxSteps = 500
  
 export type StopReason = 'complete' | 'blocked' | 'finished' | 'too_many_steps'
  
@@ -50,7 +50,7 @@ function* runNodes(nodes: Program, context: RunContext): Generator<RunStep, void
         }
       }
     } else {
-      if (context.steps >= MAX_STEPS) {
+      if (context.steps >= maxSteps) {
         context.stopReason = 'too_many_steps'
         return
       }

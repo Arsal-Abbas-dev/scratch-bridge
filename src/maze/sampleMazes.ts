@@ -33,8 +33,7 @@ export const sampleMazes: mazeLevel[] = [
         id: 2,
         name: 'First Turn',
         concept: 'Turning',
-        instructions:
-        'Use movement and turning commands to guide the character around the wall.',
+        instructions: 'Use movement and turning commands to guide the character around the wall.',
         grid: [
             ['start', 'path', 'wall', 'path', 'path'],
             ['wall', 'path', 'wall', 'path', 'wall'],
@@ -48,8 +47,7 @@ export const sampleMazes: mazeLevel[] = [
         id: 3,
         name: 'Repeated Steps',
         concept: 'Loops',
-        instructions:
-        'This maze will later be useful for showing why repeated commands can be replaced with a loop.',
+        instructions: 'This maze will later be useful for showing why repeated commands can be replaced with a loop.',
         grid: [
             ['start', 'path', 'path', 'path', 'path'],
             ['wall', 'wall', 'wall', 'wall', 'path'],
@@ -58,6 +56,20 @@ export const sampleMazes: mazeLevel[] = [
             ['path', 'wall', 'wall', 'wall', 'goal'],
         ],
         facing: 'right'
-  },
+    },
+    {
+        id: 4,
+        name: 'Staircase',
+        concept: 'Loops',
+        instructions: 'Go down the stairs. Use a loop to repeat the steps.',
+        grid: [
+            ['start', 'path', 'wall', 'wall', 'wall'],
+            ['wall', 'path', 'path', 'wall', 'wall'],
+            ['wall', 'wall', 'path', 'path', 'wall'],
+            ['wall', 'wall', 'wall', 'path', 'goal'],
+            ['wall', 'wall', 'wall', 'wall', 'wall'],
+        ],
+        facing: 'right'
 
+    },
 ]

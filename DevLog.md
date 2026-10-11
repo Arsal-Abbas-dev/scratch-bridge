@@ -207,3 +207,41 @@ To do next:
 To do next:
 - Add toolbox structure 
 - Improve empty workspace
+
+## Section 14: Resolving issues
+
+- Fixed blockly language setter
+- Fixed string template in mazeEngine.ts
+- Fixed level loader not using level.facing in mazeEngine.ts
+- Removed duplicate components
+- Removed BlocklyWorkspaceHolder
+
+To do next:
+- Add toolbox structure 
+- Improve empty workspace
+- Deploy on Vercel
+
+## Section 15: Adding Blockly Workspace
+
+- Cleaned up UI
+- Added blockly workspace
+- Added toolbox
+- Added movement blocks
+- Made the Run button have a 400 millisecond delay between steps for clarity
+- Deleted unused files
+- Added testing for certain functions
+- Deployed on Vercel
+
+To do next: 
+- Add loop blocks
+- Add level 4, based on loops
+
+## Section 16: Repeat block
+
+- Added (repeat x times) block
+- Added Level 4 "Staircase"
+- Added recursion to blocklyToProgram.ts block reader
+
+To do next:
+-
+-

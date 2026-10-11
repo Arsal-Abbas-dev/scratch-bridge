@@ -29,3 +29,41 @@ describe('blocklyToProgram', () => {
     expect(result.program).toEqual([])
   })
 })
+
+describe('blocklyToProgram with loops', () => {
+  it('reads the blocks inside a repeat block', () => {
+    const workspace = new Blockly.Workspace()
+    const start = workspace.newBlock('maze_start')
+    const loop = workspace.newBlock('maze_repeat')
+    const inside = workspace.newBlock('maze_move_forward')
+ 
+    loop.setFieldValue(4, 'times')
+    start.nextConnection!.connect(loop.previousConnection!)
+    loop.getInput('do')!.connection!.connect(inside.previousConnection!)
+ 
+    const result = blocklyToProgram(workspace)
+ 
+    expect(result.errors).toEqual([])
+    expect(result.program).toHaveLength(1)
+    expect(result.program[0]).toMatchObject({ kind: 'repeat', times: 4 })
+    expect(result.program[0]).toMatchObject({ body: [{ kind: 'move', action: 'forward' }] })
+  })
+ 
+  it('reads a loop inside a loop', () => {
+    const workspace = new Blockly.Workspace()
+    const start = workspace.newBlock('maze_start')
+    const outer = workspace.newBlock('maze_repeat')
+    const inner = workspace.newBlock('maze_repeat')
+    const move = workspace.newBlock('maze_turn_right')
+ 
+    start.nextConnection!.connect(outer.previousConnection!)
+    outer.getInput('do')!.connection!.connect(inner.previousConnection!)
+    inner.getInput('do')!.connection!.connect(move.previousConnection!)
+ 
+    const result = blocklyToProgram(workspace)
+    const outerStep = result.program[0]
+ 
+    expect(outerStep).toMatchObject({ kind: 'repeat' })
+    expect(outerStep).toMatchObject({ body: [{ kind: 'repeat', body: [{ kind: 'move', action: 'right' }] }] })
+  })
+})
