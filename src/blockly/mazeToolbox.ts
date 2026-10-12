@@ -19,5 +19,11 @@ export const mazeBlocklyToolbox = {
         {kind: 'block', type: 'maze_repeat'}
       ],
     },
+    {
+      kind: 'category',
+      name: 'Python text',
+      colour: '#d97706',
+      contents: [{ kind: 'block', type: 'py_line' }],
+    },
   ],
 }

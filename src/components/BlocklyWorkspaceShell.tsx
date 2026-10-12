@@ -3,6 +3,7 @@ import * as Blockly from 'blockly/core'
 import 'blockly/blocks'
 import * as En from 'blockly/msg/en'
 import '../blockly/mazeBlocks'
+import '../hybrid/hybridBlocks'
 import { mazeBlocklyToolbox } from '../blockly/mazeToolbox'
 import { blocklyToProgram } from '../program/blocklyToProgram'
 import type { Program } from '../program/programTypes'
@@ -27,7 +28,7 @@ export function BlocklyWorkspaceShell({
   const workspaceRef = useRef<Blockly.WorkspaceSvg | null>(null)
   const onProgramChangeRef = useRef(onProgramChange)
  
-  // Always call the newest version of the callback, without rebuilding the workspace.
+  //call the newest version of the callback, without rebuilding the workspace
   useEffect(() => {
     onProgramChangeRef.current = onProgramChange
   }, [onProgramChange])
@@ -101,7 +102,7 @@ export function BlocklyWorkspaceShell({
     }
   }, [])
  
-  // Light up the block that is running right now.
+  //light up the current block
   useEffect(() => {
     workspaceRef.current?.highlightBlock(activeBlockId)
   }, [activeBlockId])
