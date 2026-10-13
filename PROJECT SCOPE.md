@@ -2,7 +2,7 @@
 
 ## Project Name
 
-Scratch Gap Maze
+Scratch Bridge
 
 ## Core Problem
 
@@ -22,7 +22,6 @@ Build a web-based maze programming environment where learners begin with blocks,
 - Sequencing
 - Loops
 - Conditionals
-- Simple functions
 - Debugging support
 - Live Python-style code view
 - Hybrid block/text transition system
@@ -32,6 +31,7 @@ Build a web-based maze programming environment where learners begin with blocks,
 ## Version 1 Excludes
 
 - Variables
+- Functions
 - Full Python support
 - User accounts
 - Backend database

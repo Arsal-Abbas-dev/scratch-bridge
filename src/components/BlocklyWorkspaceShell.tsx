@@ -4,11 +4,13 @@ import 'blockly/blocks'
 import * as En from 'blockly/msg/en'
 import '../blockly/mazeBlocks'
 import '../hybrid/hybridBlocks'
+import { registerConvertMenu } from '../hybrid/convertMenu'
 import { mazeBlocklyToolbox } from '../blockly/mazeToolbox'
 import { blocklyToProgram } from '../program/blocklyToProgram'
 import type { Program } from '../program/programTypes'
  
 Blockly.setLocale(En as unknown as { [key: string]: string })
+registerConvertMenu()
  
 export type ProgramChange = {
   program: Program
